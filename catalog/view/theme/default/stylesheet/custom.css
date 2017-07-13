@@ -1,0 +1,295 @@
+
+.product-thumb .s-desc{
+	position: absolute;
+background-color: rgba(280, 60, 26,0.8) ;
+color: #fff;
+font-weight: 500;
+line-height: 32px;
+padding: 5px 25px;
+top: 0px;
+left: 0;
+}
+.product-thumb .price{
+  position: absolute;
+background-color: rgba(000,000,000,0.70) ;
+color: #fff;
+font-weight: 500;
+line-height: 32px;
+padding: 5px 25px;
+top: 210px;
+left: -10;
+
+}
+.product-thumb .featur-caption {
+	font-size: 20px;
+	position: absolute;
+	top:175px;
+	padding: 0 50px;
+	min-height: 115px;
+	color:red !important;
+	font-weight: bolder;
+	margin-bottom: -10px;
+}
+.product-thumb .featur-caption {
+	font-size: 20px;
+    position: absolute;
+    top: 160px;
+    padding: 0 10px;
+    min-height: 64px;
+    color: red !important;
+    font-weight: bolder;
+    margin-bottom: -86px;
+    background-color: rgba(9,9,9,0.4);
+}
+.product-thumb .caption {
+	font-size: 20px;
+	top:175px;
+	padding: 0 50px;
+	min-height: 115px;
+	color:red !important;
+	font-weight: bolder;
+	margin-bottom: -10px;
+}
+
+
+.product-thumb{
+	overflow: hidden;
+}
+
+.product-thumb .caption {
+	padding: 0 20px;
+	min-height: 25px;
+}
+.product-thumb .every-food-caption {
+	font-size: 20px;
+	position: absolute;
+	top:150px;
+	padding: 0 50px;
+	height: 1305px;
+	color:green !important;
+	font-weight: bolder;
+	margin-bottom: -10px;
+}
+.every-food-caption h4 {
+	top:220px;
+}
+
+.product-thumb12 {
+
+	margin-bottom: 20px;
+	overflow: hidden;
+	min-height: 200px;
+}
+
+.product-thumb .image a:hover {
+	
+	-moz-transform: scale(1.1, 1.1);
+	-webkit-transform: scale(1.1, 1.1);
+	transform: scale(1.1, 1.1);
+	transition: transform 2s;
+
+	}
+
+#sticky.stick {
+    margin-top: 0 !important;
+    position: fixed;
+    top: 0;
+    z-index: 10000000;
+    border-radius: 0 0 0.5em 0.5em;
+    color:red;
+    width: 100%;
+}
+
+.product-thumb .image {
+	width: 358px;
+	height: 260px;
+}
+/*#menu, h3{
+font-family: 'Khmer Os';
+
+}*/
+
+
+
+.navbar{margin-bottom:0;}
+section{width:100%; float:left;}
+.banner-section{background-image:url("https://static.pexels.com/photos/216988/pexels-photo-216988.jpeg"); background-size:cover; height: 380px; left: 0; position: absolute; top: 0; background-position:0;}
+.post-title-block{padding:100px 0;}
+.post-title-block h1 {color: #fff; font-size: 85px; font-weight: bold; text-transform: capitalize;}
+.post-title-block li{font-size:20px; color: #fff;}
+.image-block{float:left; width:100%; margin-bottom:10px;}
+.footer-link{float:left; width:100%; background:#222222; text-align:center; padding:30px;}
+.footer-link a{color:#A9FD00; font-size:18px; text-transform:uppercase;}
+
+
+
+ 
+.dropdown-menu > li.kopie > a {
+    padding-left:5px;
+}
+ 
+.dropdown-submenu {
+    position:relative;
+}
+.dropdown-submenu>.dropdown-menu {
+   top:0;left:100%;
+   margin-top:-6px;margin-left:-1px;
+   -webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;
+ }
+  
+.dropdown-submenu > a:after {
+  border-color: transparent transparent transparent #333;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  content: " ";
+  display: block;
+  float: right;  
+  height: 0;     
+  margin-right: -10px;
+  margin-top: 5px;
+  width: 0;
+}
+ 
+.dropdown-submenu:hover>a:after {
+    border-left-color:#555;
+ }
+
+.dropdown-menu > li > a:hover, .dropdown-menu > .active > a:hover {
+  text-decoration: underline;
+}  
+  
+@media (max-width: 767px) {
+
+  .navbar-nav  {
+     display: block;
+  }
+  .navbar-default .navbar-brand {
+    display: inline;
+  }
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
+  }
+  .navbar-default .navbar-nav .dropdown-menu > li > a {
+    color: red;
+    background-color: #ccc;
+    border-radius: 4px;
+    margin-top: 2px;   
+  }
+   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+     color: #333;
+   }
+   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+     background-color: #ccc;
+   }
+
+   .navbar-nav .open .dropdown-menu {
+     border-bottom: 1px solid white; 
+     border-radius: 0;
+   }
+  .dropdown-menu {
+      padding-left: 10px;
+  }
+  .dropdown-menu .dropdown-menu {
+      padding-left: 20px;
+   }
+   .dropdown-menu .dropdown-menu .dropdown-menu {
+      padding-left: 30px;
+   }
+   li.dropdown.open {
+    border: 0px solid red;
+   }
+
+}
+ 
+@media (min-width: 768px) {
+  ul.nav li:hover > ul.dropdown-menu {
+    display: block;
+  }
+  #navbar {
+    text-align: center;
+  }
+}  
+//Customer1
+
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+
+
+ /* jssor slider loading skin double-tail-spin css */
+
+        .jssorl-004-double-tail-spin img {
+            animation-name: jssorl-004-double-tail-spin;
+            animation-duration: 1.2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        @keyframes jssorl-004-double-tail-spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        .jssorb051 .i {position:absolute;cursor:pointer;}
+        .jssorb051 .i .b {fill:#fff;fill-opacity:0.5;stroke:#000;stroke-width:400;stroke-miterlimit:10;stroke-opacity:0.5;}
+        .jssorb051 .i:hover .b {fill-opacity:.7;}
+        .jssorb051 .iav .b {fill-opacity: 1;}
+        .jssorb051 .i.idn {opacity:.3;}
+
+        .jssora051 {display:block;position:absolute;cursor:pointer;}
+        .jssora051 .a {fill:none;stroke:#fff;stroke-width:360;stroke-miterlimit:10;}
+        .jssora051:hover {opacity:.8;}
+        .jssora051.jssora051dn {opacity:.5;}
+        .jssora051.jssora051ds {opacity:.3;pointer-events:none;}

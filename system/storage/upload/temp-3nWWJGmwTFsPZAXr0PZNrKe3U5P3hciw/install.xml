@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <name>AdminProtection</name>
+    <code>adminProtection</code>
+    <version>1.0</version>
+    <author>SiteGuarding.com</author>
+    <link>SiteGuarding.com</link>
+    <file path="admin/controller/common/login.php">
+        <operation>
+            <search><![CDATA[
+            $this->document->setTitle($this->language->get('heading_title'));
+            ]]></search>
+            <add position="after"><![CDATA[	    
+
+		if ($this->config->get('adminProtection_status') && $this->config->get('adminProtection_recaptcha') && !$this->IP_in_List($_SERVER['REMOTE_ADDR'], $this->config->get('adminProtection_extra_white')))
+        {
+			$data['recaptcha'] = $this->config->get('adminProtection_recaptcha');
+			if ($this->config->get('adminProtection_recaptcha_key') && $this->config->get('adminProtection_recaptcha_private_key')) {
+				$data['res_captcha'] = "<script src='https://www.google.com/recaptcha/api.js'></script><hr><div style='margin:auto;width:310px;' class='g-recaptcha' data-sitekey=" . $this->config->get('adminProtection_recaptcha_key') . "></div>";
+			} else {
+				$data['res_captcha'] = '<div style="text-aling: center;">reCAPTCHA doesn\'t work. Fill your private and public keys in settings</div>';
+			}
+        } else {
+			$data['recaptcha'] = '';
+		}
+	
+	    ]]></add>
+        </operation>
+        <operation>
+            <search><![CDATA[
+            public function index() {
+            ]]></search>
+            <add position="before"><![CDATA[	 
+		public function IP_in_List($ip_addr, $list)
+		{
+			$list = explode("\n", trim($list));    
+			if (count($list) == 0) return false;
+			
+			foreach ($list as $v)
+			{
+				$v = trim($v);
+				if ($v == '') continue;
+				if ($v == $ip_addr) return true;
+			}
+			
+			return false;
+		}
+
+
+			
+		public function secureURL($getRequestVar) {
+
+		$valid = FALSE;
+
+		if ( $this->config->get('adminProtection_status') && $this->config->get('adminProtection_secure')) {
+
+			$db_skey    =  $this->config->get('adminProtection_secure_key');
+			
+			$session_skey = "" ; 
+			If( isset($this->session->data[$db_skey]) ) {
+				$session_skey = $this->session->data[$db_skey];
+			}
+
+			if(!empty($getRequestVar)){	
+				if(isset($getRequestVar[$db_skey] )){
+					$getlink = $db_skey;
+			}}
+
+			$url_skey = "" ;
+			
+			if(isset($getlink) ){
+					$url_skey = $getlink;
+			}
+			
+					
+			if( $db_skey && $url_skey ){		
+				if ( $db_skey === $url_skey) {		
+					$this->session->data[$db_skey] = $db_skey;
+					$valid = TRUE;	
+				}
+
+			}		
+			
+			if ( $session_skey && $session_skey === $db_skey ) {			 
+					$valid = TRUE;				
+			}
+				
+		
+			
+			if (!$valid ) {   	 	
+				if ($this->config->get('config_url') != "") {
+					$loc = 'Location:'.$this->config->get('config_url').'?route=error/not_found';
+				} else {
+					$loc = 'Location:../?route=error/not_found';
+				}
+					header($loc);
+				exit;		
+			}
+
+		}
+	}
+	    ]]></add>
+        </operation>
+        <operation>
+            <search><![CDATA[
+            	protected function validate() {
+            ]]></search>
+            <add position="after"><![CDATA[	    
+	    
+		if ($this->config->get('adminProtection_status') && $this->config->get('adminProtection_recaptcha') && !$this->IP_in_List($_SERVER['REMOTE_ADDR'], $this->config->get('adminProtection_extra_white'))) {	
+			if ($this->config->get('adminProtection_recaptcha_key') != '' && $this->config->get('adminProtection_recaptcha_private_key') != '') {
+				$privatekey = $this->config->get('adminProtection_recaptcha_private_key');
+				$resp = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$privatekey."&response=".$_POST['g-recaptcha-response']."&remoteip=".$_SERVER['REMOTE_ADDR']), true);
+				if ($resp['success'] != 1) $this->error['warning'] = '<strong>ERROR!</strong>: Captcha is invalid.';
+			} 
+		}
+	    ]]></add>
+        </operation>
+        <operation>
+            <search><![CDATA[
+            	 if (isset($this->request->get['route'])) {
+            ]]></search>
+            <add position="before"><![CDATA[	
+				if ($this->IP_in_List($_SERVER['REMOTE_ADDR'], $this->config->get('adminProtection_extra_black'))) die('You don\'t have permissions to this page');			
+				if (!$this->IP_in_List($_SERVER['REMOTE_ADDR'], $this->config->get('adminProtection_extra_white'))) $this->secureURL($this->request->get);
+	    ]]></add>
+        </operation>
+    </file>  
+    <file path="admin/view/template/common/login.tpl">
+        <operation>
+            <search><![CDATA[
+            </form>
+            ]]></search>
+            <add position="before"><![CDATA[	    
+			  	  <?php
+						if ($recaptcha)
+						{	
+							echo $res_captcha;
+						}
+					?>
+	    ]]></add>
+        </operation>
+
+    </file>    
+    <file path="admin/controller/common/logout.php">
+        <operation>
+            <search><![CDATA[
+            unset($this->session->data['token']);
+            ]]></search>
+            <add position="after"><![CDATA[	    
+			if ($this->config->get('adminProtection_status') && $this->config->get('adminProtection_secure')) {
+				$db_skey    =  $this->config->get('secure_key');
+				$db_sval    =  $this->config->get('secure_value');
+				unset($this->session->data[$db_skey]);
+				unset($this->session->data[$db_sval]);
+			}
+
+	    ]]></add>
+        </operation>
+
+    </file>  
+</modification>

@@ -1,0 +1,6 @@
+<?php
+// Heading
+$_['heading_title'] = 'ម្ហូបសំរាប់ថ្ងៃស្អែក';
+
+// Text
+$_['text_tax']      = 'Ex Tax:';

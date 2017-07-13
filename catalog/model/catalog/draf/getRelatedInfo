@@ -1,0 +1,1 @@
+SELECT * FROM `oc_information_related` ir INNER JOIN `oc_information_description` id on ir.information_id=id.information_id INNER JOIN `oc_information` i on ir.related_id=i.information_id WHERE language_id=1 and ir.information_id=4 
